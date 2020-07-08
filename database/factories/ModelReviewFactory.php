@@ -4,7 +4,6 @@
 
 use App\Model\Review;
 use App\Model\Product;
-use Illuminate\Support\Str;
 use Faker\Generator as Faker;
 
 /*

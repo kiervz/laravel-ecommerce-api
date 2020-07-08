@@ -24,6 +24,7 @@ class ProductResource extends JsonResource
             'rating' => $this->reviews->count() > 0 ? round($this->reviews->sum('star') / $this->reviews->count(), 2) : 'No Rating',
             'reviews' => $this->reviews->count() > 0 ? $this->reviews->count() : 'No Review',
             'href' => [
+                'user_id' => route('get-user', $this->user_id),
                 'review' => route('reviews.index', $this->id)
             ]
         ];
