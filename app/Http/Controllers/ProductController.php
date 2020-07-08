@@ -50,4 +50,13 @@ class ProductController extends Controller
         ]);
     }
 
+    public function destroy($id)
+    {
+        $product = Product::findOrfail($id);
+        $product->delete();
+
+        return response()->json([
+            'data' => new ProductResource($product),
+        ]);
+    }
 }
