@@ -14,6 +14,7 @@ class ProductController extends Controller
     {
         $this->middleware('auth:api')->except(['index', 'show']);
     }
+
     public function index()
     {
         return ProductCollection::collection(Product::paginate(10));
@@ -37,7 +38,16 @@ class ProductController extends Controller
         return response()->json([
             'data' => new ProductResource($product),
         ]);
-
-        return $request->all();
     }
+
+    public function update(ProductRequest $request, $id)
+    {
+        $product = Product::findOrFail($id);
+        $product->update($request->all());
+
+        return response()->json([
+            'data' => new ProductResource($product),
+        ]);
+    }
+
 }
