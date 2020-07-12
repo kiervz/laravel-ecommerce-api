@@ -26,4 +26,14 @@ class ReviewController extends Controller
         ], Response::HTTP_CREATED);
     }
 
+    public function update(ReviewRequest $request, Product $product, Review $review)
+    {
+        $review->update($request->all());
+
+        return response()->json([
+            'data' => $review
+        ], Response::HTTP_OK);
+    }
+
+
 }
